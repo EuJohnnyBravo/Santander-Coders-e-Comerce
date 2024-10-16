@@ -26,6 +26,11 @@ if (button) {
         window.location.href = "../index.html";
       })
       .catch((error) => {
+        console.log(error);
+        if (loginError) {
+          loginError.textContent =
+            "Por favor, insira o nome de usuário e a senha.";
+        }
         throw error;
       });
   });
