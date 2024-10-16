@@ -1,30 +1,28 @@
+import { ILogin } from "../interfaces/ILogin";
+import axios from "axios";
+
 const loginError = document.querySelector<HTMLElement>("#loginError");
 const button = document.querySelector<HTMLElement>("button");
 
-if (button) {
-  button.addEventListener("click", () => {
-    const user = document.querySelector<HTMLInputElement>("#user");
-    const password = document.querySelector<HTMLInputElement>("#password");
+function getUserInput() {
+  const username = document.querySelector<HTMLInputElement>("#user")?.value;
+  const password = document.querySelector<HTMLInputElement>("#password")?.value;
 
-    if (!user?.value || !password?.value) {
+  return { username, password };
+}
+
+if (button) {
+  button.addEventListener("click", async () => {
+    const userInput = getUserInput();
+    if (!userInput.username || !userInput.password) {
+      loginError!.innerHTML = `<p>Campo de usuario/senha incorreto</p>`;
       return;
     }
-
-    let myHeaders = new Headers();
-    myHeaders.set("Content-Type", "application/json");
-
-    fetch("https://fakestoreapi.com/auth/login", {
-      method: "POST",
-      headers: myHeaders,
-      body: JSON.stringify({
-        username: user?.value,
-        password: password?.value,
-      }),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        sessionStorage.setItem("authToken", json.token);
+    await axios
+      .post<ILogin>("https://fakestoreapi.com/auth/login", userInput)
+      .then((response) => {
+        const { token } = response.data;
+        sessionStorage.setItem("authToken", token);
         window.location.href = "../index.html";
       })
       .catch((error) => {
@@ -33,6 +31,7 @@ if (button) {
           loginError.textContent =
             "Por favor, insira o nome de usuário e a senha.";
         }
+        throw error;
       });
   });
 }
