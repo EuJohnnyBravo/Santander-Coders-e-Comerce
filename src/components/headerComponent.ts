@@ -1,5 +1,5 @@
 export function showHeader(): string {
-  if (sessionStorage.getItem("authToken")) {
+  if (sessionStorage.getItem("@AUTH_TOKEN")) {
     return `
     <nav>
       <ul class="nav-menu">

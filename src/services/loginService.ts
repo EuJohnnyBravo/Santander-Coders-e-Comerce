@@ -18,20 +18,35 @@ if (button) {
       loginError!.innerHTML = `<p>Campo de usuario/senha incorreto</p>`;
       return;
     }
-    await axios
-      .post<ILogin>("https://fakestoreapi.com/auth/login", userInput)
-      .then((response) => {
-        const { token } = response.data;
-        sessionStorage.setItem("authToken", token);
-        window.location.href = "../index.html";
-      })
-      .catch((error) => {
-        console.log(error);
-        if (loginError) {
-          loginError.textContent =
-            "Por favor, insira o nome de usuário e a senha.";
-        }
-        throw error;
-      });
+    try {
+      const response = await axios.post<ILogin>(
+        "https://fakestoreapi.com/auth/login",
+        userInput
+      );
+      const { token } = response.data;
+      sessionStorage.setItem("@AUTH_TOKEN", token);
+      window.location.href = "../index.html";
+    } catch (error) {
+      console.log(error);
+      if (loginError) {
+        loginError.textContent =
+          "Por favor, insira o nome de usuário e a senha.";
+      }
+      throw error;
+    }
   });
 }
+
+// .then((response) => {
+//   const { token } = response.data;
+//   sessionStorage.setItem("authToken", token);
+//   window.location.href = "../index.html";
+// })
+// .catch((error) => {
+//   console.log(error);
+//   if (loginError) {
+//     loginError.textContent =
+//       "Por favor, insira o nome de usuário e a senha.";
+//   }
+//   throw error;
+// });
