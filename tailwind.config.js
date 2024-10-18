@@ -1,12 +1,11 @@
-/** @type {import('tailwindcss').Config} */
+/ @type {import('tailwindcss').Config} /
 export default {
-  content: ["./public/*.html", "./src/**/*.{html,ts}", "./index.html"],
+  content: ["./public/*.html", "./src//*.{html,ts}", "./index.html"],
   theme: {
     extend: {
-      fontFamily: { sans: "Livvic" },
-    },
-
-    extend: {
+      fontFamily: {
+        livvic: ["Livvic", "sans-serif"],
+      },
       colors: {
         ada_green: "#A6F750",
         ada_navyblue: {
