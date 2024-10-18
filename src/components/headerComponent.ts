@@ -25,7 +25,7 @@ function showHeader(): void {
     </nav>
   `;
 
-  const headerLoged = `
+  const headerLogged = `
     <nav class="bg-ada_navyblue-50">
       <div class="max-w-[1440px] m-auto py-4 px-6">
         <div class="flex flex-row justify-between">
@@ -48,7 +48,7 @@ function showHeader(): void {
   const headerElement = document.querySelector<HTMLElement>("#header");
 
   if (sessionStorage.getItem("@AUTH_TOKEN")) {
-    headerElement!.innerHTML = headerLoged;
+    headerElement!.innerHTML = headerLogged;
 
     document
       .querySelector<HTMLElement>("#logout")
