@@ -1,21 +1,23 @@
 import { ada_logo } from "../assets/svg/ada-logo";
 import { carrinho } from "../assets/svg/carrinho";
 import { entrar } from "../assets/svg/entrar";
+import { sair } from "../assets/svg/sair";
+import { logout } from "../utils/logout";
 
-export function showHeader(): string {
+function showHeader(): void {
   const headerLogin = `
     <nav class="bg-ada_navyblue-50">
-      <div class="container-header">
+      <div class="max-w-[1440px] m-auto py-4 px-6">
         <div class="flex flex-row justify-between">
           <a id="ada-logo" href="./index.html">${ada_logo(193, 65)}</a>
-          <div class="flex flex-row gap-4">
-            <a id="carrinho" href="/cart.html">
-              <span>${carrinho(48, 48)}</span>
-              <p>carrinho</p>
+          <div class="flex flex-row gap-[30%]">
+            <a id="carrinho" href="/cart.html" class="flex flex-col justify-center items-center">
+              <span>${carrinho(36, 36)}</span>
+              <p class="font-livvic font-medium text-ada_green">Carrinho</p>
             </a>
-            <a id="entrar" href="/login.html">
-              <span>${entrar(48, 48)}</span>
-              <p>Entrar</p>
+            <a id="login" href="/login.html" class="flex flex-col justify-center items-center">
+              <span>${entrar(36, 36)}</span>
+              <p class="font-livvic font-medium text-ada_green">Entrar</p>
             </a>
           </div>
         </div>
@@ -24,17 +26,41 @@ export function showHeader(): string {
   `;
 
   const headerLoged = `
-    <nav>
-      <ul class="nav-menu">
-        <li><a id="home-menu" href="./index.html">Menu Principal</a></li>
-        <li><a id="home-logout" href="#">Sair</a></li>
-        <li><a id="home-login" href="/cart.html">Carrinho</a></li>
-      </ul>
+    <nav class="bg-ada_navyblue-50">
+      <div class="max-w-[1440px] m-auto py-4 px-6">
+        <div class="flex flex-row justify-between">
+          <a id="ada-logo" href="./index.html">${ada_logo(193, 65)}</a>
+          <div class="flex flex-row gap-[30%]">
+            <a id="carrinho" href="/cart.html" class="flex flex-col justify-center items-center">
+              <span>${carrinho(36, 36)}</span>
+              <p class="font-livvic font-medium text-ada_green">Carrinho</p>
+            </a>
+            <span id="logout" class="flex flex-col justify-center items-center hover:cursor-pointer">
+              <span>${sair(36, 36)}</span>
+              <p class="font-livvic font-medium text-ada_green">Sair</p>
+            </span>
+          </div>
+        </div>
+      </div>
     </nav>
   `;
 
+  const headerElement = document.querySelector<HTMLElement>("#header");
+
   if (sessionStorage.getItem("@AUTH_TOKEN")) {
-    return headerLoged;
+    headerElement!.innerHTML = headerLoged;
+
+    document
+      .querySelector<HTMLElement>("#logout")
+      ?.addEventListener("click", () => {
+        logout();
+        showHeader();
+      });
+  } else {
+    headerElement!.innerHTML = headerLogin;
   }
-  return headerLogin;
 }
+
+window.addEventListener("DOMContentLoaded", async () => {
+  showHeader();
+});
