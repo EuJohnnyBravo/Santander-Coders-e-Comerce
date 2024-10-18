@@ -22,7 +22,7 @@ function showLoginComponent(){
         <div class="flex flex-col justify-center items-center gap-6 mt-10">
           <input id="user" type="text" class="w-72 h-9 rounded-md bg-ada_navyblue-100 shadow-md text-white placeholder:text-ada_grey text-md p-2 font-light outline-none" placeholder="Usuário" value="mor_2314">
             <div class="w-72 h-9 rounded-md bg-ada_navyblue-100 shadow-md text-white  flex">
-          <input id="password" type="password" class="w-[88%] bg-transparent rounded-md placeholder:text-ada_grey text-md font-light outline-none p-2  placeholder="Senha" value="83r5^_"">
+          <input id="password" type="password" placeholder="Senha" class="w-[88%] bg-transparent rounded-md placeholder:text-ada_grey text-md font-light outline-none p-2  placeholder="Senha" value="83r5^_"">
           <button id="visible" class="flex flex-col justify-center items-center" data-visible="0">
           ${closedEye(24, 24)}
           </button>
@@ -31,7 +31,7 @@ function showLoginComponent(){
         <div class="flex justify-center items-center mt-10">
           <button id="btn-entrar" class="text-xl bg-ada_green w-96 rounded-md py-2 px-4 font-livvic font-light">Entrar</button>
         </div>
-        <div id="loginError" class="">
+        <div id="loginError" class="mt-5">
         </div>
     `;
 
