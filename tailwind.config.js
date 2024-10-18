@@ -3,10 +3,9 @@ export default {
   content: ["./public/*.html", "./src/**/*.{html,ts}", "./index.html"],
   theme: {
     extend: {
-      fontFamily: { sans: "Livvic" },
-    },
-
-    extend: {
+      fontFamily: {
+        livvic: ["Livvic", "sans-serif"],
+      },
       colors: {
         ada_green: "#A6F750",
         ada_navyblue: {
