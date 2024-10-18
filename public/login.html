@@ -7,25 +7,13 @@
     <link rel="stylesheet" href="../src/styles/index.css" />
     <title>E-Comerce ADA</title>
   </head>
-  <body class="bg-slate-600">
-    <header id="header"></header>
-    <div id="login">
-      <form id="loginForm">
-        <label for="user">Usuario</label>
-        <input type="text" name="user" id="user" required value="mor_2314" />
-        <label for="password">Senha</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          required
-          value="83r5^_" />
-        <input type="checkbox" name="visible" id="visible" />
-        <button type="button">Login</button>
-      </form>
-      <p id="loginError"></p>
-    </div>
+  <body class="bg-ada_navyblue-100 flex justify-center items-center">
+    <main class="bg-ada_navyblue-50 flex justify-center items-center rounded-md mt-[25vh]">
+      <section id="section-login" class="w-[436px] h-[472px] ">
+      </section>
+    </main>
     <script type="module" src="/src/main.ts"></script>
-    <script type="module" src="../src/utils/login.ts"></script>
+    <script type="module" src="/src/services/loginService.ts"></script>
+    <script type="module" src="../src/components/LoginComponent.ts"></script>
   </body>
 </html>

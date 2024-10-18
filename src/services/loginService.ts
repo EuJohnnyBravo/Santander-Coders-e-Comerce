@@ -6,7 +6,7 @@ export async function loginService(
   loginError: HTMLElement
 ) {
   if (!loginData.username || !loginData.password) {
-    loginError!.innerHTML = `<p>Campo de usuario/senha incorreto</p>`;
+    loginError!.innerHTML = `<p class="text-white text-center text-lg font-livvic p-2git">Campo de usuario/senha incorreto</p>`;
     return;
   }
   try {
