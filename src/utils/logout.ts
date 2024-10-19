@@ -4,6 +4,6 @@ export function logout() {
     return;
   }
   alert("Sessão encerrada!");
-  sessionStorage.removeItem("@AUTH_TOKEN");
+  sessionStorage.clear();
   window.location.href = "/index.html";
 }

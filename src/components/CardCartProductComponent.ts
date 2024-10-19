@@ -16,9 +16,7 @@ function convertPrice(price: number): number {
         <p class="font-livvic text-white text-base my-2">R$${convertPrice(
           product.price
         ).toFixed(2)}</p>
-        <a href="/product.html?id=${
-          product.id
-        }" class="mt-auto flex justify-center py-2 px-4 items-center bg-ada_green font-livvic rounded-lg text-ada_navyblue-100">Remover do Carrinho</a>
+        <button id="remove-from-cart-${product.id}" class="mt-auto flex justify-center py-2 px-4 items-center bg-ada_green font-livvic rounded-lg text-ada_navyblue-100">Remover do Carrinho</button>
       </div>
     `;
   }
