@@ -1,3 +1,4 @@
+import { showProducts } from "../components/productComponent";
 import { IProduct } from "../interfaces/IProduct";
 
 export enum filters {
@@ -23,4 +24,13 @@ export function itensFilter(products: IProduct[], flags: filters): IProduct[] {
     if (flags & filters.woman && product.category === "women's clothing")
       return true;
   });
+}
+
+export function applyFilters(
+  activeFilters: filters,
+  products: IProduct[],
+  productsList: HTMLElement
+) {
+  const filteredProducts = itensFilter(products, activeFilters);
+  if (productsList) productsList.innerHTML = showProducts(filteredProducts);
 }
