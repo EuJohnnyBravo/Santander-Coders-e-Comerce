@@ -1,6 +1,5 @@
 import { IProduct } from "../interfaces/IProduct";
 import {
-  addProductToCart,
   clearCart,
   getSessionUserCart,
   removeProductCart,
@@ -25,15 +24,6 @@ export function addButtonEnventRemoveFromCart(product: IProduct) {
   if (button) {
     button.addEventListener("click", () => {
       removeProductCart(product.id);
-    });
-  }
-}
-
-export function addButtonEnventAddCard(product: IProduct) {
-  const button = document.getElementById(`add-to-cart-${product.id}`);
-  if (button) {
-    button.addEventListener("click", () => {
-      addProductToCart({ productId: product.id, quantity: 1 });
     });
   }
 }
@@ -132,9 +122,6 @@ async function updateComponents() {
   if (productsList) {
     const products = await fetchProducts();
     productsList.innerHTML = showProducts(products);
-    products.map((product) => {
-      addButtonEnventAddCard(product);
-    });
   }
 
   if (sectionCartProducts && sectionCheckout) {
@@ -172,10 +159,6 @@ async function showCartComponent() {
 
 document.addEventListener("click", async (event) => {
   const target = event.target as HTMLElement;
-
-  if (target.matches('[id^="add-to-cart-"]')) {
-    await updateComponents();
-  }
 
   if (target.matches('[id^="remove-from-cart-"]')) {
     await updateComponents();

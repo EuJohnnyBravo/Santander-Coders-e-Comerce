@@ -1,4 +1,3 @@
-import { addButtonEnventAddCard } from "../components/CartComponent";
 import { showProducts } from "../components/productComponent";
 import { IProduct } from "../interfaces/IProduct";
 
@@ -59,7 +58,6 @@ export function showFiltredProducts(
   orderRadios: NodeListOf<Element>,
   priceOrder: "desc" | "asc"
 ) {
-  console.log(productList);
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", () => {
       const filterType = checkbox.getAttribute(
@@ -90,10 +88,6 @@ export function showFiltredProducts(
         );
       });
     });
-  });
-
-  productList.map((product) => {
-    addButtonEnventAddCard(product);
   });
 
   applyFiltersAndSort(activeFilters, productList, productsList!, priceOrder);
