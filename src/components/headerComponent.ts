@@ -2,6 +2,7 @@ import { ada_logo } from "../assets/svg/ada-icon-svg";
 import { carrinho } from "../assets/svg/cart-svg";
 import { entrar } from "../assets/svg/login-svg";
 import { sair } from "../assets/svg/logout-svg";
+import { isLogged } from "../services/loginService";
 import { logout } from "../utils/logout";
 
 function showHeader(): void {
@@ -11,7 +12,7 @@ function showHeader(): void {
         <div class="flex flex-row justify-between">
           <a id="ada-logo" href="./index.html">${ada_logo(193, 65)}</a>
           <div class="flex flex-row gap-[30%]">
-            <a id="carrinho" href="/cart.html" class="flex flex-col justify-center items-center">
+            <a id="carrinho" href="#" class="flex flex-col justify-center items-center">
               <span>${carrinho(36, 36)}</span>
               <p class="font-livvic font-medium text-ada_green">Carrinho</p>
             </a>
@@ -47,7 +48,7 @@ function showHeader(): void {
 
   const headerElement = document.querySelector<HTMLElement>("#header");
 
-  if (sessionStorage.getItem("@AUTH_TOKEN")) {
+  if (isLogged()) {
     headerElement!.innerHTML = headerLogged;
 
     document

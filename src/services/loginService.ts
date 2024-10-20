@@ -30,3 +30,7 @@ export async function loginService(
     throw error;
   }
 }
+
+export function isLogged() {
+  return sessionStorage.getItem("@AUTH_TOKEN") ? true : false;
+}
