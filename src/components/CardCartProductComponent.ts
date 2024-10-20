@@ -10,7 +10,7 @@ export function cardCartProductComponent(
   productCart: IProductCart
 ): string {
   return `
-      <div class="flex flex-col p-5 rounded-lg m-4 bg-ada_navyblue-50 w-80 h-96">
+      <div class="flex flex-col p-5 rounded-lg m-4 bg-ada_navyblue-50 w-80 h-[436px]">
         <div class="flex justify-center bg-white items-center rounded-lg py-2">
           <img src="${product.image}" alt="imagem ${
     product.title
