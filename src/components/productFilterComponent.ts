@@ -33,7 +33,7 @@ export function productFilterComponent(): string {
         <div class="flex flex-row">
           <div class="flex flex-col mx-3" id="price">
             <label class="font-livvic text-white text-l">
-              <input type="radio" id="price-order-asc" name="price" value="asc"> Crescente
+              <input type="radio" id="price-order-asc" name="price" value="asc" checked> Crescente
             </label>
             <label class="font-livvic text-white text-l">
               <input type="radio" id="price-order-desc" name="price" value="desc"> Decrescente
