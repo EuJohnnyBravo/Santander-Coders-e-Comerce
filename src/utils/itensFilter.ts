@@ -1,3 +1,4 @@
+import { addButtonEnventAddCard } from "../components/CartComponent";
 import { showProducts } from "../components/productComponent";
 import { IProduct } from "../interfaces/IProduct";
 
@@ -86,10 +87,15 @@ export function showFiltredProducts(
           productList,
           productsList!,
           priceOrder
-        ); // Aplica os filtros e ordena
+        );
       });
     });
   });
+
+  productList.map((product) => {
+    addButtonEnventAddCard(product);
+  });
+
   applyFiltersAndSort(activeFilters, productList, productsList!, priceOrder);
   if (productsList) productsList.innerHTML = showProducts(productList);
 }
