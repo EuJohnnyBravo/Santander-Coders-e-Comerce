@@ -7,6 +7,7 @@ import {
   quantityProductInCart,
   removeProductCart,
 } from "../services/cartService";
+import { isLogged } from "../services/loginService";
 
 async function getQueryParams(): Promise<IProduct | null> {
   const queryString = window.location.search;
@@ -27,6 +28,8 @@ function showComponent(
   isProductInCart: Boolean,
   isQuantityInCart: Number
 ) {
+  const isUserLogged = isLogged();
+
   sectionProduct.innerHTML = `
     <div class="container mx-auto py-8 px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -51,11 +54,11 @@ function showComponent(
             <button id="sum" class="bg-ada_green text-ada_navyblue-100 px-4 py-2 rounded-lg text-lg">+</button>
           </div>
           <div class="mt-4">
-            <button id="btn-add-cart" class="w-full bg-ada_green text-ada_navyblue-100 px-6 py-2 rounded-lg">
+            <button id="btn-add-cart" ${isUserLogged ? "" : "disabled"} class="w-full bg-ada_green text-ada_navyblue-100 px-6 py-2 rounded-lg disabled:bg-ada_grey">
               ${
                 isProductInCart
                   ? "Remover do Carrinho"
-                  : "Adicionar ao Carrinho"
+                  : isUserLogged ? "Adicionar ao Carrinho" : "Realize Login"
               }
             </button>
           </div>
