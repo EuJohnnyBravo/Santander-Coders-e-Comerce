@@ -13,12 +13,17 @@ export async function fetchProducts(): Promise<IProduct[]> {
   }
 }
 
-export async function getProductById(productId: number) {
-  try{
-    const response = await axios.get(`https://fakestoreapi.com/products/${productId}`);
-    const product: IProduct = response.data;
+export async function getProductById(
+  productId: number
+): Promise<IProduct | null> {
+  try {
+    const response = await axios.get(
+      `https://fakestoreapi.com/products/${productId}`
+    );
+    const product: IProduct = response.data; // Confirma que o tipo retornado é IProduct
     return product;
-  }catch(error){
-    console.error(error);
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return null; // Retorna null em caso de erro
   }
 }

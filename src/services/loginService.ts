@@ -1,6 +1,8 @@
 import { ILogin, ILoginData } from "../interfaces/ILogin";
 import axios from "axios";
 import { getUserCart } from "./cartService";
+import { decodeJWT } from "../utils/decodeJWT";
+import { IJwt } from "../interfaces/IJwt";
 
 export async function loginService(
   loginData: ILoginData,
@@ -17,7 +19,8 @@ export async function loginService(
     );
     const { token } = response.data;
     sessionStorage.setItem("@AUTH_TOKEN", token);
-    await getUserCart(1);
+    const decodeToken: IJwt = decodeJWT(token);
+    await getUserCart(decodeToken.sub);
     window.location.href = "../index.html";
   } catch (error) {
     console.log(error);
