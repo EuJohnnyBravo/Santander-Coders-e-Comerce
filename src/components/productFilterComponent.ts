@@ -7,39 +7,38 @@ export function productFilterComponent(): string {
         <span class="m-2">${menuBars(32, 32)}</span>
         <p class="font-livvic text-ada_green text-lg">Filtros</p>
       </div>
-      <div class="mx-3">
+      <div class="mx-3" id="filers">
         <h2 class="font-livvic text-white text-xl mx-3">Categorias</h2>
         <div class="flex flex-row">
           <div class="flex flex-col mx-3">
-            <div>
-              <input type="checkbox" id="filter-eletronics" data-filter="electronics">
-              <a id="eletronics" class="font-livvic text-white text-l">Eletrônicos</a>
-            </div>
-            <div>
-              <input type="checkbox" id="filter-jewelry" data-filter="jewelery">
-              <a id="jewelery" class="font-livvic text-white text-l">Jóias</a>
-            </div>
+            <label class="font-livvic text-white text-l">
+              <input type="checkbox" id="filter-eletronics" data-filter="electronics"> Eletrônicos
+            </label>
+            <label class="font-livvic text-white text-l">
+              <input type="checkbox" id="filter-jewelry" data-filter="jewelery"> Jóias
+            </label>
           </div>
           <div class="flex flex-col mx-3">
-            <div>
-              <input type="checkbox" id="filter-men" data-filter="man">
-              <a id="men" class="font-livvic text-white text-l">Roupas Masculinas</a>
-            </div>
-            <div>
-              <input type="checkbox" id="filter-woman" data-filter="woman">
-              <a id="woman" class="font-livvic text-white text-l">Roupas Femininas</a>
-            </div>
+            <label class="font-livvic text-white text-l">
+              <input type="checkbox" id="filter-men" data-filter="man"> Roupas Masculinas
+            </label>
+            <label class="font-livvic text-white text-l">
+              <input type="checkbox" id="filter-woman" data-filter="woman"> Roupas Femininas
+            </label>
           </div>
         </div>
       </div>
       <div class="mx-3">
-        <h2 class="font-livvic text-white text-xl mx-3">Ordem</h2>
+        <h2 class="font-livvic text-white text-xl mx-3">Preço</h2>
         <div class="flex flex-row">
-          <div class="flex flex-col mx-3">
-            <a id="up" class="font-livvic text-white text-l">Crescente</a>
-            <a id="down" class="font-livvic text-white text-l">Decrescente</a>
+          <div class="flex flex-col mx-3" id="price">
+            <label class="font-livvic text-white text-l">
+              <input type="radio" id="price-order-asc" name="price" value="asc"> Crescente
+            </label>
+            <label class="font-livvic text-white text-l">
+              <input type="radio" id="price-order-desc" name="price" value="desc"> Decrescente
+            </label>
           </div>
-          <a id="noneO" class="font-livvic text-ada_green text-l">Nenhuma</a>
         </div>
       </div>
     </div>

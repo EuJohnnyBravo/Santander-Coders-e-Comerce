@@ -26,11 +26,70 @@ export function itensFilter(products: IProduct[], flags: filters): IProduct[] {
   });
 }
 
-export function applyFilters(
+export function applyFiltersAndSort(
   activeFilters: filters,
   products: IProduct[],
-  productsList: HTMLElement
+  productsList: HTMLElement,
+  priceOrder: "asc" | "desc"
 ) {
-  const filteredProducts = itensFilter(products, activeFilters);
+  let filteredProducts = itensFilter(products, activeFilters);
+  filteredProducts = sortProducts(filteredProducts, priceOrder);
   if (productsList) productsList.innerHTML = showProducts(filteredProducts);
+}
+
+export function sortProducts(
+  products: IProduct[],
+  order: "asc" | "desc"
+): IProduct[] {
+  return products.sort((a, b) => {
+    if (order === "asc") {
+      return a.price - b.price;
+    } else {
+      return b.price - a.price;
+    }
+  });
+}
+
+export function showFiltredProducts(
+  activeFilters: filters,
+  checkboxes: NodeListOf<HTMLInputElement>,
+  productList: IProduct[],
+  productsList: HTMLElement,
+  orderRadios: NodeListOf<Element>,
+  priceOrder: "desc" | "asc"
+) {
+  console.log(productList);
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      const filterType = checkbox.getAttribute(
+        "data-filter"
+      ) as keyof typeof filters;
+
+      if (checkbox.checked) {
+        activeFilters |= filters[filterType];
+      } else {
+        activeFilters &= ~filters[filterType];
+      }
+      applyFiltersAndSort(
+        activeFilters,
+        productList,
+        productsList!,
+        priceOrder
+      );
+    });
+
+    orderRadios.forEach((radio) => {
+      radio.addEventListener("change", () => {
+        priceOrder = (radio as HTMLInputElement).value as "asc" | "desc";
+        applyFiltersAndSort(
+          activeFilters,
+          productList,
+          productsList!,
+          priceOrder
+        ); // Aplica os filtros e ordena
+      });
+    });
+  });
+  applyFiltersAndSort(activeFilters, productList, productsList!, priceOrder);
+  if (productsList) productsList.innerHTML = showProducts(productList);
 }
