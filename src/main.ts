@@ -1,19 +1,34 @@
 import { fetchProducts } from "./services/productService";
-import { showProducts } from "./components/productComponent";
-import { addButtonEnventAddCard } from "./components/CartComponent";
+import { productFilterComponent } from "./components/productFilterComponent";
+import { filters, showFiltredProducts } from "./utils/itensFilter";
 
 const productsList = document.querySelector<HTMLElement>("#home");
+const selectedFilter = document.querySelector<HTMLDivElement>("#filter");
 
 window.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const products = await fetchProducts();
-    if (productsList) productsList.innerHTML = showProducts(products);
-    products.map((product) => {
-      addButtonEnventAddCard(product);
+  selectedFilter!.innerHTML = productFilterComponent();
+  const checkboxes = document.querySelectorAll<HTMLInputElement>(
+    "#filter input[type='checkbox']"
+  );
+  const priceOrderRadios = document.querySelectorAll(
+    "#price input[name='price']"
+  );
+  let priceOrder: "asc" | "desc" = "asc";
+
+  fetchProducts()
+    .then((productList) => {
+      const activeFilters: filters = filters.none;
+      showFiltredProducts(
+        activeFilters,
+        checkboxes,
+        productList,
+        productsList!,
+        priceOrderRadios,
+        priceOrder
+      );
     })
-  } catch(error) {
-    console.error(error);
-    if (productsList)
-      productsList.innerHTML = "<p>Erro ao carregar lista de produtos</p>";
-  }
+    .catch((err) => {
+      if (productsList)
+        productsList.innerHTML = `<p>Erro ao carregar lista de produtos: ${err}</p>`;
+    });
 });

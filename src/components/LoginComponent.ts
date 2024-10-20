@@ -1,22 +1,20 @@
-import { ada_logo } from "../assets/svg/ada-logo";
-import { closedEye } from "../assets/svg/ClosedEye";
-import { eye } from "../assets/svg/Eye";
+import { ada_logo } from "../assets/svg/ada-icon-svg";
+import { closedEye } from "../assets/svg/closed-eye-svg";
+import { eye } from "../assets/svg/opened-eye-svg";
 import { ILoginData } from "../interfaces/ILogin";
 import { loginService } from "../services/loginService";
 
-
 function getUserInput(): ILoginData {
-    const username = document.querySelector<HTMLInputElement>("#user")!.value;
-    const password = document.querySelector<HTMLInputElement>("#password")!.value;
-  
-    return { username, password };
-  }
-  
-  
-function showLoginComponent(){
-    const htmlLogin =  `
+  const username = document.querySelector<HTMLInputElement>("#user")!.value;
+  const password = document.querySelector<HTMLInputElement>("#password")!.value;
+
+  return { username, password };
+}
+
+function showLoginComponent() {
+  const htmlLogin = `
         <div class="flex justify-center items-center">
-            <a href="/index.html">${ada_logo(156,156)}</a>
+            <a href="/index.html">${ada_logo(156, 156)}</a>
         </div>
         <h1 class="text-center text-xl font-livvic text-white">Faça Login</h1>
         <div class="flex flex-col justify-center items-center gap-6 mt-10">
@@ -35,39 +33,37 @@ function showLoginComponent(){
         </div>
     `;
 
-    const sectionLogin = document.getElementById("section-login");
+  const sectionLogin = document.getElementById("section-login");
 
-    if(sectionLogin){
-        sectionLogin.innerHTML = htmlLogin;
-    }
-
-    const seePassword = document.getElementById("visible") as HTMLButtonElement;
-    const password = document.getElementById("password") as HTMLInputElement;
-    const loginError = document.getElementById("loginError") as HTMLElement;
-    const button = document.getElementById("btn-entrar") as HTMLElement;
-
-    seePassword.addEventListener("click", () => {
-        const isVisible = seePassword.getAttribute("data-visible") === "1";
-        seePassword.setAttribute("data-visible", isVisible ? "0" : "1");
-        if (isVisible) {
-            password.type = "password";
-            seePassword.innerHTML = closedEye(24, 24); 
-        } else {
-            password.type = "text";
-            seePassword.innerHTML = eye(24, 24); 
-        }
-    });
-  
-  if (button) {
-    button.addEventListener("click", () => {
-        const loginInput = getUserInput();
-        loginService(loginInput, loginError!)
-    });
+  if (sectionLogin) {
+    sectionLogin.innerHTML = htmlLogin;
   }
 
+  const seePassword = document.getElementById("visible") as HTMLButtonElement;
+  const password = document.getElementById("password") as HTMLInputElement;
+  const loginError = document.getElementById("loginError") as HTMLElement;
+  const button = document.getElementById("btn-entrar") as HTMLElement;
+
+  seePassword.addEventListener("click", () => {
+    const isVisible = seePassword.getAttribute("data-visible") === "1";
+    seePassword.setAttribute("data-visible", isVisible ? "0" : "1");
+    if (isVisible) {
+      password.type = "password";
+      seePassword.innerHTML = closedEye(24, 24);
+    } else {
+      password.type = "text";
+      seePassword.innerHTML = eye(24, 24);
+    }
+  });
+
+  if (button) {
+    button.addEventListener("click", () => {
+      const loginInput = getUserInput();
+      loginService(loginInput, loginError!);
+    });
+  }
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
-    showLoginComponent();
-  });
-
+  showLoginComponent();
+});
