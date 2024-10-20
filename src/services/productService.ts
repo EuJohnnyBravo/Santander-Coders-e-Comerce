@@ -12,3 +12,13 @@ export async function fetchProducts(): Promise<IProduct[]> {
     throw error;
   }
 }
+
+export async function getProductById(productId: number) {
+  try{
+    const response = await axios.get(`https://fakestoreapi.com/products/${productId}`);
+    const product: IProduct = response.data;
+    return product;
+  }catch(error){
+    console.error(error);
+  }
+}

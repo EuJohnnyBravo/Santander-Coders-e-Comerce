@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="./src/styles/index.css" />
     <title>E-Comerce ADA</title>
   </head>
-  <body class="bg-slate-300">
+  <body class="bg-ada_navyblue-100">
     <header id="header"></header>
-    <div class="grid-rows-3">
-      <div id="home"></div>
-    </div>
+    <main class="grid grid-cols-2 gap-10 justify-center max-w-[1440px] m-auto py-4 px-6">
+      <section id="section-products-cart" class="grid grid-cols-2"></section>
+      <section id="section-checkout">
+      </section>
+    </main>
     <script type="module" src="/src/components/headerComponent.ts"></script>
-    <script
-      type="module"
-      src="/src/components/cardProductComponent.ts"></script>
+    <script type="module" src="/src/components/CartComponent.ts"></script>
+    <script type="module" src="/src/components/cardProductComponent.ts"></script>
     <script type="module" src="/src/utils/logout.ts"></script>
   </body>
 </html>

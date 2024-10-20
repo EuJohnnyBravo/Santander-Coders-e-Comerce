@@ -1,5 +1,6 @@
 import { ILogin, ILoginData } from "../interfaces/ILogin";
 import axios from "axios";
+import { getUserCart } from "./cartService";
 
 export async function loginService(
   loginData: ILoginData,
@@ -16,6 +17,7 @@ export async function loginService(
     );
     const { token } = response.data;
     sessionStorage.setItem("@AUTH_TOKEN", token);
+    await getUserCart(1);
     window.location.href = "../index.html";
   } catch (error) {
     console.log(error);
