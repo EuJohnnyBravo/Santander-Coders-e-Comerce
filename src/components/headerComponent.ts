@@ -1,7 +1,7 @@
-import { ada_logo } from "../assets/svg/ada-logo";
-import { carrinho } from "../assets/svg/carrinho";
-import { entrar } from "../assets/svg/entrar";
-import { sair } from "../assets/svg/sair";
+import { ada_logo } from "../assets/svg/ada-icon-svg";
+import { carrinho } from "../assets/svg/cart-svg";
+import { entrar } from "../assets/svg/login-svg";
+import { sair } from "../assets/svg/logout-svg";
 import { logout } from "../utils/logout";
 
 function showHeader(): void {
