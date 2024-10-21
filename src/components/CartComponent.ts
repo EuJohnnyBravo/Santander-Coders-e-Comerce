@@ -42,52 +42,42 @@ export async function loadCardCartComponents(products: IProduct[]) {
 function loadCheckout(products: IProduct[], totalProdutos: number) {
   if (sectionCheckout) {
     sectionCheckout.innerHTML = `
-       <div class="bg-ada_navyblue-50 rounded-md w-full max-w-[332px] sm:max-w-[400px] lg:max-w-[500px] h-auto mx-auto">
-        <div class="text-white p-4">
-          <div>
-            <h3 class="text-center text-2xl font-livvic font-bold">Carrinho de Compras</h3>
+       <div class="bg-ada_navyblue-50 rounded-md w-[332px] h-[424px] p-4">
+      <div class="text-white">
+        <h3 class="text-center text-2xl font-livvic font-bold">Carrinho de Compras</h3>
+        <div class="p-5 flex flex-col gap-3">
+          <div class="flex justify-between text-xl font-livvic">
+            <p>Produtos:</p>
+            <p>R$: ${products.length > 0 ? convertPrice(totalProdutos).toFixed(2) : "0.00"}</p>
           </div>
-          <div class="p-5 flex flex-col gap-3">
-            <div class="flex justify-between text-xl font-livvic">
-              <p>Produtos:</p>
-              <p>R$: ${
-                products.length > 0
-                  ? convertPrice(totalProdutos).toFixed(2)
-                  : "0.00"
-              }</p>
+          <div class="flex justify-between text-xl font-livvic">
+            <p>Frete:</p>
+            <p>R$: ${products.length > 0 ? "120.00" : "0.00"}</p>
+          </div>
+          <div class="flex justify-between text-xl font-livvic">
+            <p>Descontos:</p>
+            <p>R$: 0.00</p>
+          </div>
+          <div class="flex justify-between text-xl font-livvic font-bold">
+            <p>Total:</p>
+            <p>R$: ${products.length > 0 ? (convertPrice(totalProdutos) + 120).toFixed(2) : "0.00"}</p>
+          </div>
+          <div class="mt-5 flex justify-center flex-col">
+            <div>
+              <Label class="text-xl font-livvic font-bold">Cupom</Label>
             </div>
-            <div class="flex justify-between text-xl font-livvic">
-              <p>Frete:</p>
-              <p>R$: ${products.length > 0 ? "120.00" : "0.00"}</p>
-            </div>
-            <div class="flex justify-between text-xl font-livvic">
-              <p>Descontos:</p>
-              <p>R$: 0.00</p>
-            </div>
-            <div class="flex justify-between text-xl font-livvic font-bold">
-              <p>Total:</p>
-              <p>R$: ${
-                products.length > 0
-                  ? (convertPrice(totalProdutos) + 120).toFixed(2)
-                  : "0.00"
-              }</p>
-            </div>
-            <div class="mt-5 flex justify-center flex-col">
-              <div>
-                <label class="text-xl font-livvic font-bold">Cupom</label>
-              </div>
-              <div class="flex flex-col sm:flex-row gap-2">
-                <input type="text" placeholder="Cupom" class="w-full sm:w-72 h-10 rounded-md bg-ada_navyblue-100 shadow-md text-white placeholder:text-ada_grey text-md p-2 font-light outline-none">
-                <button class="text-ada_navyblue-100 text-xl bg-ada_green w-full sm:w-24 rounded-md py-1 px-2 font-livvic font-light">Aplicar</button>
-              </div>
+            <div class="flex gap-2">
+              <input type="text" placeholder="Cupom" class="w-72 h-10 rounded-md bg-ada_navyblue-100 shadow-md text-white placeholder:text-ada_grey text-md p-2 font-light outline-none">
+              <button class="text-ada_navyblue-100 text-xl bg-ada_green w-24 rounded-md py-1 px-2 font-livvic font-light">Aplicar</button>
             </div>
           </div>
-          <div class="flex justify-center items-center mt-2">
-            <button id="btn-checkout" class="text-xl bg-ada_green w-full sm:w-72 rounded-md py-2 px-4 font-livvic font-light text-ada_navyblue-100">Realizar Compra</button>
-          </div>
-          <div class="notify-checkout"></div>
         </div>
+        <div class="flex justify-center items-center mt-4">
+          <button id="btn-checkout" class="text-xl bg-ada_green w-full sm:w-72 rounded-md py-2 px-4 font-livvic font-light text-ada_navyblue-100">Realizar Compra</button>
+        </div>
+        <div class="notify-checkout mt-2"></div>
       </div>
+    </div>
     `;
   }
 }

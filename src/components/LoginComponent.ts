@@ -13,24 +13,23 @@ function getUserInput(): ILoginData {
 
 function showLoginComponent() {
   const htmlLogin = `
-        <div class="flex justify-center items-center">
-            <a href="/index.html">${ada_logo(156, 156)}</a>
-        </div>
-        <h1 class="text-center text-xl font-livvic text-white">Faça Login</h1>
-        <div class="flex flex-col justify-center items-center gap-6 mt-10">
-          <input id="user" type="text" class="w-72 h-9 rounded-md bg-ada_navyblue-100 shadow-md text-white placeholder:text-ada_grey text-md p-2 font-light outline-none" placeholder="Usuário" value="mor_2314">
-            <div class="w-72 h-9 rounded-md bg-ada_navyblue-100 shadow-md text-white  flex">
-          <input id="password" type="password" placeholder="Senha" class="w-[88%] bg-transparent rounded-md placeholder:text-ada_grey text-md font-light outline-none p-2"  value="83r5^_">
-          <button id="visible" class="flex flex-col justify-center items-center" data-visible="0">
+        <div class="flex justify-center items-center mb-3">
+      <a href="/index.html">${ada_logo(156, 156)}</a>
+    </div>
+    <h1 class="text-center text-xl font-livvic text-white">Faça Login</h1>
+    <div class="flex flex-col justify-center items-center gap-6 mt-10">
+      <input id="user" type="text" class="w-full h-9 rounded-md bg-ada_navyblue-100 shadow-md text-white placeholder:text-ada_grey text-md p-2 font-light outline-none" placeholder="Usuário" value="mor_2314">
+      <div class="w-full h-9 rounded-md bg-ada_navyblue-100 shadow-md text-white flex">
+        <input id="password" type="password" placeholder="Senha" class="w-[88%] bg-transparent rounded-md placeholder:text-ada_grey text-md font-light outline-none p-2" value="83r5^_">
+        <button id="visible" class="flex flex-col justify-center items-center" data-visible="0">
           ${closedEye(24, 24)}
-          </button>
-        </div>
-        </div>
-        <div class="flex justify-center items-center mt-10">
-          <button id="btn-entrar" class="text-xl bg-ada_green w-96 rounded-md py-2 px-4 font-livvic font-light">Entrar</button>
-        </div>
-        <div id="loginError" class="mt-5">
-        </div>
+        </button>
+      </div>
+    </div>
+    <div class="flex justify-center items-center mt-10">
+      <button id="btn-entrar" class="text-xl bg-ada_green w-full max-w-[320px] sm:max-w-[350px] lg:max-w-[384px] rounded-md py-2 px-4 font-livvic font-light">Entrar</button>
+    </div>
+    <div id="loginError" class="mt-5"></div>
     `;
 
   const sectionLogin = document.getElementById("section-login");
