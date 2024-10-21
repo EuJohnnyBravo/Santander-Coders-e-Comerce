@@ -8,7 +8,7 @@ export function productFilterComponent(): string {
           <span>${menuBars(24, 24)}</span>
         </button>
         <span class="hidden md:block">${menuBars(32, 32)}</span>
-        <p class="font-livvic text-ada_green text-lg">Filtros</p>
+        <p class="font-livvic text-ada_green text-lg ml-2">Filtros</p>
       </div>
       <div :class="{'hidden': !open}" class="w-full md:flex md:flex-row">
         <div class="mx-3">
