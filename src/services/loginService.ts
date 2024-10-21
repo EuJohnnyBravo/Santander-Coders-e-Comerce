@@ -9,7 +9,7 @@ export async function loginService(
   loginError: HTMLElement
 ) {
   if (!loginData.username || !loginData.password) {
-    loginError!.innerHTML = `<p class="text-white text-center text-lg font-livvic p-2git">Campo de usuario/senha incorreto</p>`;
+    loginError!.innerHTML = `<p class="text-white text-center text-lg font-livvic p-2git">Por favor, insira o nome de usuário e a senha.</p>`;
     return;
   }
   try {
@@ -25,7 +25,7 @@ export async function loginService(
   } catch (error) {
     console.log(error);
     if (loginError) {
-      loginError.textContent = "Por favor, insira o nome de usuário e a senha.";
+      loginError.innerHTML = `<p class="text-white text-center text-lg font-livvic p-2git">Campo de usuario/senha incorreto</p>`;
     }
     throw error;
   }

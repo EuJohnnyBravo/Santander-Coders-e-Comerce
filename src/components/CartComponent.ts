@@ -42,19 +42,13 @@ export async function loadCardCartComponents(products: IProduct[]) {
 function loadCheckout(products: IProduct[], totalProdutos: number) {
   if (sectionCheckout) {
     sectionCheckout.innerHTML = `
-       <div class="bg-ada_navyblue-50 rounded-m w-[332px] h-[424px]">
-         <div class="text-white p-4">
-        <div>
-          <h3 class="text-center text-2xl font-livvic font-bold">Carrinho de Compras</h3>
-        </div>
+       <div class="bg-ada_navyblue-50 rounded-md w-[332px] h-[424px] p-4">
+      <div class="text-white">
+        <h3 class="text-center text-2xl font-livvic font-bold">Carrinho de Compras</h3>
         <div class="p-5 flex flex-col gap-3">
           <div class="flex justify-between text-xl font-livvic">
             <p>Produtos:</p>
-            <p>R$: ${
-              products.length > 0
-                ? convertPrice(totalProdutos).toFixed(2)
-                : "0.00"
-            }</p>
+            <p>R$: ${products.length > 0 ? convertPrice(totalProdutos).toFixed(2) : "0.00"}</p>
           </div>
           <div class="flex justify-between text-xl font-livvic">
             <p>Frete:</p>
@@ -66,11 +60,7 @@ function loadCheckout(products: IProduct[], totalProdutos: number) {
           </div>
           <div class="flex justify-between text-xl font-livvic font-bold">
             <p>Total:</p>
-            <p>R$: ${
-              products.length > 0
-                ? (convertPrice(totalProdutos) + 120).toFixed(2)
-                : "0.00"
-            }</p>
+            <p>R$: ${products.length > 0 ? (convertPrice(totalProdutos) + 120).toFixed(2) : "0.00"}</p>
           </div>
           <div class="mt-5 flex justify-center flex-col">
             <div>
@@ -82,13 +72,12 @@ function loadCheckout(products: IProduct[], totalProdutos: number) {
             </div>
           </div>
         </div>
-        <div class="flex justify-center items-center mt-2">
-          <button id="btn-checkout" class="text-xl bg-ada_green w-72 rounded-md py-2 px-4 font-livvic font-light text-ada_navyblue-100">Realizar Compra</button>
+        <div class="flex justify-center items-center mt-4">
+          <button id="btn-checkout" class="text-xl bg-ada_green w-full sm:w-72 rounded-md py-2 px-4 font-livvic font-light text-ada_navyblue-100">Realizar Compra</button>
         </div>
-        <div class="notify-checkout">
-        </div>
+        <div class="notify-checkout mt-2"></div>
       </div>
-       </div>
+    </div>
     `;
   }
 }

@@ -1,5 +1,4 @@
 export function logout() {
-  console.log("oi");
   if (!confirm("Deseja encerrar a sessão")) {
     return;
   }
