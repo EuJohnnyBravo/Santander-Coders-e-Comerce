@@ -45,7 +45,7 @@ function showHeader(): void {
               <span class="hidden md:block">${carrinho(36, 36)}</span>
               <p class="font-livvic font-medium text-ada_green">Carrinho</p>
             </a>
-            <a id="logout" class="flex flex-col justify-center items-center">
+            <a id="logout" class="flex flex-col justify-center items-center hover:cursor-pointer">
               <span class="block md:hidden">${sair(24, 24)}</span>
               <span class="hidden md:block">${sair(36, 36)}</span>
               <p class="font-livvic font-medium text-ada_green">Sair</p>

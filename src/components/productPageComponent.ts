@@ -130,16 +130,13 @@ function setEventListeners(
 }
 
 async function productPageComponent() {
-  const sectionProduct =
-    document.querySelector<HTMLElement>("#section-product");
+  const sectionProduct = document.querySelector<HTMLElement>("#section-product");
   const product = await getQueryParams();
 
   if (!product || !sectionProduct) return;
 
   const isProductInCart = productInCart(product.id);
-  const numberOfProducts = isProductInCart
-    ? quantityProductInCart(product.id)
-    : 1;
+  const numberOfProducts = isProductInCart ? quantityProductInCart(product.id) : 1;
 
   showComponent(product, sectionProduct, isProductInCart, numberOfProducts);
 
